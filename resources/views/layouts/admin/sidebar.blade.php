@@ -59,7 +59,7 @@
                     <span class="mt-1 ms-1 sidebar-text">Volt Overview</span>
                 </a>
             </li>
-            <li class="nav-item  active ">
+            <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20"
@@ -72,8 +72,8 @@
                 </a>
             </li>
             <!-- Tambahkan blok kode ini -->
-            <li class="nav-item  active ">
-                <a href="" class="nav-link">
+            <li class="nav-item {{ request()->routeIs('user.*') ? 'active' : '' }}">
+                <a href="{{ route('pelanggan.index') }}" class="nav-link">
                     <span class="sidebar-icon">
                         <svg class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5"
                             stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -87,8 +87,8 @@
                 </a>
             </li>
 
-            <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
-            <li class="nav-item">
+            {{-- tombol user --}}
+            <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/getting-started/quick-start/"
                     target="_blank" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
@@ -99,7 +99,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </span>
-                    <span class="sidebar-text">Documentation <span
+                    <span class="sidebar-text">User <span
                             class="badge badge-sm bg-secondary ms-1 text-gray-800">v1.4</span></span>
                 </a>
             </li>
