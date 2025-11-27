@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Multipleupload;
+use App\Models\MultipleUpload;
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 
@@ -54,7 +54,7 @@ class PelangganController extends Controller
 
                 $file->move(public_path('uploads/multiple'), $filename);
 
-                Multipleupload::create([
+                MultipleUpload::create([
                     'ref_table' => 'pelanggan',
                     'ref_id'    => $pelanggan->pelanggan_id, // pk pelanggan kamu
                     'filename'  => $filename,
@@ -70,7 +70,7 @@ class PelangganController extends Controller
     {
         $pelanggan = Pelanggan::findOrFail($id);
 
-        $files = Multipleupload::where('ref_table', 'pelanggan')
+        $files = MultipleUpload::where('ref_table', 'pelanggan')
             ->where('ref_id', $id)
             ->get();
 
@@ -81,7 +81,7 @@ class PelangganController extends Controller
     {
         $dataPelanggan = Pelanggan::findOrFail($id);
 
-        $files = Multipleupload::where('ref_table', 'pelanggan')
+        $files = MultipleUpload::where('ref_table', 'pelanggan')
             ->where('ref_id', $id)
             ->get();
 
@@ -122,7 +122,7 @@ class PelangganController extends Controller
 
                 $file->move(public_path('uploads/multiple'), $filename);
 
-                Multipleupload::create([
+                MultipleUpload::create([
                     'ref_table' => 'pelanggan',
                     'ref_id'    => $pelanggan->pelanggan_id,
                     'filename'  => $filename,
@@ -163,7 +163,7 @@ class PelangganController extends Controller
 
                 $file->move(public_path('uploads/multiple'), $filename);
 
-                Multipleupload::create([
+                MultipleUpload::create([
                     'ref_table' => $request->ref_table,
                     'ref_id'    => $request->ref_id,
                     'filename'  => $filename,
@@ -177,7 +177,7 @@ class PelangganController extends Controller
     /* DELETE FILE */
     public function deleteFile(string $fileId)
     {
-        $file = Multipleupload::findOrFail($fileId);
+        $file = MultipleUpload::findOrFail($fileId);
 
         $path = public_path('uploads/multiple/' . $file->filename);
         if (file_exists($path)) {
