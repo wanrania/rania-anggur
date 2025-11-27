@@ -37,4 +37,11 @@ class Pelanggan extends Model
             });
         }
     }
+
+    public function files()
+    {
+        return $this->hasMany(MultipleUpload::class, 'ref_id', 'pelanggan_id')
+            ->where('ref_table', 'pelanggan');
+    }
+
 }
